@@ -1,0 +1,30 @@
+syntax = "proto3";
+
+import "common.proto";
+
+option go_package = "grpc-repo/client;client";
+
+message GetPodsRequest {
+  string namespace = 1;
+}
+
+// The response message containing the greetings
+message GetPodsResponse {
+  common.CommonResponse resp = 1;
+  repeated PodInfo info = 2;
+}
+
+message PodInfo{
+  string namespace = 1;
+  string name = 2;
+  int32 totalPods = 3;
+  int32 readyPods = 4;
+  string status = 5;
+  int32 restarts = 6;
+  int32 age = 7;
+}
+
+service KubectlClient {
+  // Sends a greeting
+  rpc GetPods (GetPodsRequest) returns (GetPodsResponse) {}
+}

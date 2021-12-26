@@ -1,0 +1,10 @@
+syntax = "proto3";
+
+package common;
+
+option go_package = "grpc-repo/common;common";
+
+message CommonResponse{
+    string descryption = 2;
+    int32 resultCode = 3;
+}
